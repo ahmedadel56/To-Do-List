@@ -17,22 +17,25 @@ function addToDo() {
 function pushContent() {
   listItems.innerHTML = '';
   insert.value = '';
-  list.forEach((element) => {
+  for (let i = 0; i < list.length; i += 1) {
+    list[i].index = i;
     const listItem = document.createElement('li');
+    const check = document.createElement('div');
+    check.className = 'check';
     const input = document.createElement('input');
     input.type = 'checkbox';
     const descreption = document.createElement('span');
     descreption.className = 'descreption';
-    descreption.innerHTML = element.descreption;
-    const remove = document.createElement('span');
+    descreption.innerHTML = list[i].descreption;
     const icon = document.createElement('i');
-    icon.className = 'icon-ellipsis-vertical';
-    remove.appendChild(icon);
-    listItem.appendChild(input);
-    listItem.appendChild(descreption);
-    listItem.appendChild(remove);
+    icon.className = 'fas fa-ellipsis-v';
+    check.appendChild(input);
+    check.appendChild(descreption);
+    listItem.appendChild(check);
+    listItem.appendChild(icon);
     listItems.appendChild(listItem);
-  });
+  }
+  localStorage.setItem('list', JSON.stringify(list));
 }
 
 document.querySelector('.insert').addEventListener('submit', (e) => {
