@@ -27,12 +27,15 @@ function pushContent() {
     const descreption = document.createElement('span');
     descreption.className = 'descreption';
     descreption.innerHTML = list[i].descreption;
-    const icon = document.createElement('i');
-    icon.className = 'fas fa-ellipsis-v';
+    const icon1 = document.createElement('i');
+    icon1.className = 'fas fa-ellipsis-v';
+    const icon2 = document.createElement('i');
+    icon2.className = 'fa fa-trash';
     check.appendChild(input);
     check.appendChild(descreption);
     listItem.appendChild(check);
-    listItem.appendChild(icon);
+    listItem.appendChild(icon1);
+    listItem.appendChild(icon2);
     listItems.appendChild(listItem);
   }
   localStorage.setItem('list', JSON.stringify(list));
