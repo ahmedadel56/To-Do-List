@@ -60,3 +60,15 @@ ul li {
 .fa-trash {
   display: none;
 }
+
+.list-items li:hover .fa-trash{
+  display: block;
+}
+
+.list-items li:hover .fa-ellipsis-v {
+  display: none;
+}
+
+.list-items li:hover {
+  background-color: #EAEB78;
+}

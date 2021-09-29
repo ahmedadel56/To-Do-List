@@ -11,14 +11,15 @@ function addToDo() {
   const newAdd = new ToDo();
   newAdd.descreption = document.getElementById('insert').value;
   list.push(newAdd);
+  update()
   localStorage.setItem('list', JSON.stringify(list));
 }
 
 function pushContent() {
   listItems.innerHTML = '';
   insert.value = '';
-  for (let i = 0; i < list.length; i += 1) {
-    list[i].index = i;
+  insert.focus();
+  list.forEach(element => {
     const listItem = document.createElement('li');
     const check = document.createElement('div');
     check.className = 'check';
@@ -26,7 +27,7 @@ function pushContent() {
     input.type = 'checkbox';
     const descreption = document.createElement('span');
     descreption.className = 'descreption';
-    descreption.innerHTML = list[i].descreption;
+    descreption.innerHTML = element.descreption;
     const icon1 = document.createElement('i');
     icon1.className = 'fas fa-ellipsis-v';
     const icon2 = document.createElement('i');
@@ -37,12 +38,39 @@ function pushContent() {
     listItem.appendChild(icon1);
     listItem.appendChild(icon2);
     listItems.appendChild(listItem);
-  }
+  });
   localStorage.setItem('list', JSON.stringify(list));
 }
 
+
+function removeToDO(){
+    const remove = document.querySelectorAll('.fa-trash');
+    console.log(list[list.length-1]);
+    for (let i = 0; i <= list[list.length-1].index; i+=1) {
+      remove[i].addEventListener('click', () => {
+        list.splice(i-1,1);
+        remove[i].parentElement.remove();
+        update();
+        localStorage.setItem('list', JSON.stringify(list));
+        console.log(i);
+      });
+    }
+}
+
+function update(){
+  for (let i=0; i<list.length; i+=1){
+    list[i].index = i;
+    localStorage.setItem('list', JSON.stringify(list));
+  }
+}
+
 document.querySelector('.insert').addEventListener('submit', (e) => {
-  e.preventDefault();
   addToDo();
   pushContent();
+  removeToDO();
 });
+
+window.onload = ()=>{
+  pushContent();
+  removeToDO();
+}
