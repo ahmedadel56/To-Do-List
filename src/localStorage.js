@@ -7,19 +7,31 @@ function ToDo(descreption, completed, index) {
   this.index = index;
 }
 
+function removeChildNodes(listItems) {
+  while (listItems.firstChild) {
+    listItems.removeChild(listItems.firstChild);
+  }
+}
+
+function update() {
+  for (let i = 0; i < list.length; i += 1) {
+    list[i].index = i;
+    localStorage.setItem('list', JSON.stringify(list));
+  }
+}
+
 function addToDo() {
   const newAdd = new ToDo();
   newAdd.descreption = document.getElementById('insert').value;
   list.push(newAdd);
-  update()
-  localStorage.setItem('list', JSON.stringify(list));
+  update();
 }
 
 function pushContent() {
-  listItems.innerHTML = '';
+  removeChildNodes(listItems);
   insert.value = '';
   insert.focus();
-  list.forEach(element => {
+  list.forEach((element) => {
     const listItem = document.createElement('li');
     const check = document.createElement('div');
     check.className = 'check';
@@ -42,35 +54,27 @@ function pushContent() {
   localStorage.setItem('list', JSON.stringify(list));
 }
 
-
-function removeToDO(){
-    const remove = document.querySelectorAll('.fa-trash');
-    console.log(list[list.length-1]);
-    for (let i = 0; i <= list[list.length-1].index; i+=1) {
-      remove[i].addEventListener('click', () => {
-        list.splice(i-1,1);
-        remove[i].parentElement.remove();
-        update();
-        localStorage.setItem('list', JSON.stringify(list));
-        console.log(i);
-      });
-    }
-}
-
-function update(){
-  for (let i=0; i<list.length; i+=1){
-    list[i].index = i;
-    localStorage.setItem('list', JSON.stringify(list));
+function removeToDO() {
+  const remove = Array.from(document.querySelectorAll('.fa-trash'));
+  for (let i = 0; i < list.length; i += 1) {
+    remove[i].addEventListener('click', () => {
+      list.splice(i, 1);
+      listItems.removeChild(listItems.childNodes[i]);
+      window.location.reload();
+      update();
+      localStorage.setItem('list', JSON.stringify(list));
+    });
   }
 }
 
 document.querySelector('.insert').addEventListener('submit', (e) => {
+  e.preventDefault();
   addToDo();
   pushContent();
   removeToDO();
 });
 
-window.onload = ()=>{
+window.onload = () => {
   pushContent();
   removeToDO();
-}
+};

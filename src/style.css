@@ -61,7 +61,7 @@ ul li {
   display: none;
 }
 
-.list-items li:hover .fa-trash{
+.list-items li:hover .fa-trash {
   display: block;
 }
 
@@ -70,5 +70,5 @@ ul li {
 }
 
 .list-items li:hover {
-  background-color: #EAEB78;
+  background-color: #eaeb78;
 }
