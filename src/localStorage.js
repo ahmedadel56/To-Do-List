@@ -13,16 +13,21 @@ function removeChildNodes(listItems) {
   }
 }
 
+function refreshStorage() {
+  localStorage.setItem('list', JSON.stringify(list));
+}
+
 function update() {
   for (let i = 0; i < list.length; i += 1) {
     list[i].index = i;
-    localStorage.setItem('list', JSON.stringify(list));
+    refreshStorage();
   }
 }
 
 function addToDo() {
   const newAdd = new ToDo();
   newAdd.descreption = document.getElementById('insert').value;
+  newAdd.completed = false;
   list.push(newAdd);
   update();
 }
@@ -37,6 +42,7 @@ function pushContent() {
     check.className = 'check';
     const input = document.createElement('input');
     input.type = 'checkbox';
+    input.className = 'checkbox';
     const descreption = document.createElement('span');
     descreption.className = 'descreption';
     descreption.innerHTML = element.descreption;
@@ -51,7 +57,7 @@ function pushContent() {
     listItem.appendChild(icon2);
     listItems.appendChild(listItem);
   });
-  localStorage.setItem('list', JSON.stringify(list));
+  refreshStorage();
 }
 
 function removeToDO() {
@@ -62,7 +68,31 @@ function removeToDO() {
       listItems.removeChild(listItems.childNodes[i]);
       window.location.reload();
       update();
-      localStorage.setItem('list', JSON.stringify(list));
+      refreshStorage();
+    });
+  }
+}
+
+function checked() {
+  const checks = Array.from(document.querySelectorAll('.checkbox'));
+  const descreption = Array.from(document.querySelectorAll('.descreption'));
+  for (let i = 0; i < list.length; i += 1) {
+    if (list[i].completed) {
+      descreption[i].classList.toggle('checked');
+      checks[i].toggleAttribute('checked');
+    }
+  }
+}
+
+function checkBox() {
+  const checks = Array.from(document.querySelectorAll('.checkbox'));
+  const descreption = Array.from(document.querySelectorAll('.descreption'));
+  for (let i = 0; i <= list.length; i += 1) {
+    checks[i].addEventListener('click', () => {
+      list[i].completed = checks[i].checked;
+      descreption[i].classList.toggle('checked');
+      checks[i].toggleAttribute('checked');
+      refreshStorage();
     });
   }
 }
@@ -72,9 +102,13 @@ document.querySelector('.insert').addEventListener('submit', (e) => {
   addToDo();
   pushContent();
   removeToDO();
+  checked();
+  checkBox();
 });
 
 window.onload = () => {
   pushContent();
   removeToDO();
+  checked();
+  checkBox();
 };

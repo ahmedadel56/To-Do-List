@@ -72,3 +72,7 @@ ul li {
 .list-items li:hover {
   background-color: #eaeb78;
 }
+
+.checked {
+  text-decoration: line-through;
+}
