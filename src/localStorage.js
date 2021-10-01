@@ -24,7 +24,6 @@ function update() {
   }
 }
 
-
 function clearAll() {
   const clearAllBtn = document.querySelector('.remove-button');
   if (listItems.childNodes.length > 0) {
@@ -74,7 +73,7 @@ function pushContent() {
     icon1.className = 'fas fa-ellipsis-v';
     const icon2 = document.createElement('i');
     icon2.className = 'fa fa-trash';
-    descreForm.appendChild(descreption)
+    descreForm.appendChild(descreption);
     check.appendChild(input);
     check.appendChild(descreForm);
     listItem.appendChild(check);
@@ -84,7 +83,6 @@ function pushContent() {
   });
   refreshStorage();
 }
-
 
 function removeToDO() {
   const remove = Array.from(document.querySelectorAll('.fa-trash'));
@@ -125,16 +123,16 @@ function checkBox() {
 }
 
 function edit() {
-  const descForm =Array.from(document.querySelectorAll('.desc-form'));
+  const descForm = Array.from(document.querySelectorAll('.desc-form'));
   const enterDes = Array.from(document.querySelectorAll('.descreption'));
-  for (let i = 0;i<list.length;i+=1){
-    descForm[i].addEventListener('submit',(e)=>{
-      console.log(enterDes[i].value);
+  for (let i = 0; i < list.length; i += 1) {
+    descForm[i].addEventListener('submit', (e) => {
+      e.preventDefault();
       list[i].descreption = enterDes[i].value;
       refreshStorage();
-    })
-
-}}
+    });
+  }
+}
 
 document.querySelector('.insert').addEventListener('submit', (e) => {
   e.preventDefault();
