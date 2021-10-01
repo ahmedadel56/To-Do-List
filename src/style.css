@@ -6,9 +6,6 @@ input {
   border: none;
 }
 
-span {
-  width: 2rem;
-}
 
 .container {
   width: 70%;
@@ -54,6 +51,9 @@ ul li {
 
 .check .descreption {
   margin-left: 10px;
+  border: none;
+  outline: none;
+  background-color: inherit;
 }
 
 .fa-trash {
