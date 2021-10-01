@@ -90,12 +90,14 @@ ul li {
   background-color: #f6f6f6;
   margin: auto;
 }
+
 .remove-all a {
   color: black;
   opacity: 0.5;
   text-decoration: none;
   font-size: 20px;
 }
+
 .remove-all a:hover {
   opacity: 1;
   text-decoration: underline;

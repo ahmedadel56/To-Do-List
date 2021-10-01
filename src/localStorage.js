@@ -24,26 +24,25 @@ function update() {
   }
 }
 
-function clearAll(){
+function clearAll() {
   const clearAllBtn = document.querySelector('.remove-button');
-  if(listItems.childNodes.length > 0){
-      clearAllBtn.style.display = 'block';
-  }else {
+  if (listItems.childNodes.length > 0) {
+    clearAllBtn.style.display = 'block';
+  } else {
     clearAllBtn.style.display = 'none';
   }
-  clearAllBtn.addEventListener('click',()=>{
-    for (let i = 0; i<= list.length;i+=1){
-      if(list[i].completed){
-        list.splice(i,1);
-        listItems.removeChild(listItems.childNodes[i]) 
+  clearAllBtn.addEventListener('click', () => {
+    for (let i = 0; i <= list.length; i += 1) {
+      if (list[i].completed) {
+        list.splice(i, 1);
+        listItems.removeChild(listItems.childNodes[i]);
         window.location.reload();
         refreshStorage();
-        update()
+        update();
       }
     }
-  })
+  });
 }
-
 
 function addToDo() {
   const newAdd = new ToDo();
@@ -118,7 +117,6 @@ function checkBox() {
     });
   }
 }
-
 
 document.querySelector('.insert').addEventListener('submit', (e) => {
   e.preventDefault();
