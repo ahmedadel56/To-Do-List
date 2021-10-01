@@ -1,4 +1,18 @@
-const list = JSON.parse(localStorage.getItem('list')) || [];
+// const list = JSON.parse(localStorage.getItem('list')) || [];
+let list = [
+  {
+    descreption: 'first',
+    completed: false
+  },
+  {
+    descreption:'second',
+    completed:false
+  },
+  {
+    descreption: 'third',
+    completed:false
+  }
+]
 const insert = document.getElementById('insert');
 const listItems = document.querySelector('.list-items');
 function ToDo(descreption, completed, index) {
@@ -53,7 +67,6 @@ function addToDo() {
 }
 
 function pushContent() {
-  removeChildNodes(listItems);
   insert.value = '';
   insert.focus();
   list.forEach((element) => {
@@ -81,6 +94,7 @@ function pushContent() {
     listItem.appendChild(icon2);
     listItems.appendChild(listItem);
   });
+  update();
   refreshStorage();
 }
 
