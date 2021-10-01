@@ -1,18 +1,18 @@
 // const list = JSON.parse(localStorage.getItem('list')) || [];
-let list = [
+const list = [
   {
     descreption: 'first',
-    completed: false
+    completed: false,
   },
   {
-    descreption:'second',
-    completed:false
+    descreption: 'second',
+    completed: false,
   },
   {
     descreption: 'third',
-    completed:false
-  }
-]
+    completed: false,
+  },
+];
 const insert = document.getElementById('insert');
 const listItems = document.querySelector('.list-items');
 function ToDo(descreption, completed, index) {
@@ -21,11 +21,11 @@ function ToDo(descreption, completed, index) {
   this.index = index;
 }
 
-function removeChildNodes(listItems) {
-  while (listItems.firstChild) {
-    listItems.removeChild(listItems.firstChild);
-  }
-}
+// function removeChildNodes(listItems) {
+//   while (listItems.firstChild) {
+//     listItems.removeChild(listItems.firstChild);
+//   }
+// }
 
 function refreshStorage() {
   localStorage.setItem('list', JSON.stringify(list));
