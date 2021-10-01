@@ -24,6 +24,27 @@ function update() {
   }
 }
 
+function clearAll(){
+  const clearAllBtn = document.querySelector('.remove-button');
+  if(listItems.childNodes.length > 0){
+      clearAllBtn.style.display = 'block';
+  }else {
+    clearAllBtn.style.display = 'none';
+  }
+  clearAllBtn.addEventListener('click',()=>{
+    for (let i = 0; i<= list.length;i+=1){
+      if(list[i].completed){
+        list.splice(i,1);
+        listItems.removeChild(listItems.childNodes[i]) 
+        window.location.reload();
+        refreshStorage();
+        update()
+      }
+    }
+  })
+}
+
+
 function addToDo() {
   const newAdd = new ToDo();
   newAdd.descreption = document.getElementById('insert').value;
@@ -80,6 +101,7 @@ function checked() {
     if (list[i].completed) {
       descreption[i].classList.toggle('checked');
       checks[i].toggleAttribute('checked');
+      refreshStorage();
     }
   }
 }
@@ -87,7 +109,7 @@ function checked() {
 function checkBox() {
   const checks = Array.from(document.querySelectorAll('.checkbox'));
   const descreption = Array.from(document.querySelectorAll('.descreption'));
-  for (let i = 0; i <= list.length; i += 1) {
+  for (let i = 0; i < list.length; i += 1) {
     checks[i].addEventListener('click', () => {
       list[i].completed = checks[i].checked;
       descreption[i].classList.toggle('checked');
@@ -97,6 +119,7 @@ function checkBox() {
   }
 }
 
+
 document.querySelector('.insert').addEventListener('submit', (e) => {
   e.preventDefault();
   addToDo();
@@ -104,6 +127,7 @@ document.querySelector('.insert').addEventListener('submit', (e) => {
   removeToDO();
   checked();
   checkBox();
+  clearAll();
 });
 
 window.onload = () => {
@@ -111,4 +135,5 @@ window.onload = () => {
   removeToDO();
   checked();
   checkBox();
+  clearAll();
 };
