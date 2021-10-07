@@ -1,6 +1,7 @@
 describe('check Add Remove function', () => {
-    // 1-Arrange
-    const { addToDo, removeToDO, list } = require('./util');
+  // 1-Arrange
+/* eslint-disable */
+  const { addToDo, removeToDO, list } = require('./util'); 
 
   // test the list of objects that mock local storage
   test('mocked local storage testt', () => {
