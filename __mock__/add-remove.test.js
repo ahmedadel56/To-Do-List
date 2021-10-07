@@ -26,6 +26,7 @@ describe('check Add Remove function', () => {
     removeToDO();
 
     // 3-assert
+    expect(list.length).toBe(3);
     expect(list[2].descreption).toBe('third');
     expect(list[2].completed).toBe(false);
     expect(list[2].index).toBe(2);
