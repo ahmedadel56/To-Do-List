@@ -7,7 +7,7 @@
 > This project consist in making a To Do task list using webpack.
 
 # Live Demo
-  https://ahmedadel56.github.io/To-Do-List/dist/
+  you can checkout website [here](https://ahmedadel56.github.io/To-Do-List/dist/)
 
 ## Built With
 
@@ -15,7 +15,7 @@
 - Javascript
 - Webpack
 
-## Getting Started
+## Getting Startedhttps://ahmedadel56.github.io/To-Do-List/dist/
 
 - Run git clone on this project at the desired directory:
    ```
@@ -42,9 +42,9 @@ An updated web browser
 
 👤 **Ahmed Adel**
 
-- GitHub: https://github.com/ahmedadel56
-- Twitter: https://twitter.com/tiredashell0
-- LinkedIn: https://www.linkedin.com/in/ahmed-adel56/;
+* GitHub: [@githubhandle](https://github.com/ahmedadel56)
+- Twitter: [Twitter](https://twitter.com/tiredashell0)
+* LinkedIn: [LinkedIn](https://www.linkedin.com/in/ahmed-adel56/)
 
 ## 🤝 Contributing
 
