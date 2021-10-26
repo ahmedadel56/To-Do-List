@@ -55,7 +55,8 @@ function clearAll() {
   });
 }
 
-function addToDo() {
+// eslint-disable-next-line import/prefer-default-export
+export function addToDo() {
   const newAdd = new ToDo();
   newAdd.descreption = document.getElementById('insert').value;
   newAdd.completed = false;
